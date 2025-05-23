@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho de Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #e0ffe0 0%, #e79aa0 100%);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .carrinho-container {
+            background: #fff;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 32px;
+            box-shadow: 0 4px 16px rgba(140, 174, 110, 0.10);
+        }
+
+        h1 {
+            color: #8bae6e;
+            text-align: center;
+        }
+
+        ul {
+            font-size: 1.2rem;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            background: #f6fff6;
+            margin-bottom: 12px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 1;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .quantidade {
+            background: #e79aa0;
+            color: #fff;
+            border-radius: 12px;
+            padding: 4px 12px;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .remover-btn {
+            background: #e79aa0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 10px;
+            transition: background 0.2s;
+        }
+
+        .remover-btn:hover {
+            background: #c95b7b;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+            transform: translateX(40px) scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carrinho-container">
+        <h1>Produtos no Carrinho</h1>
+        <ul id="lista-carrinho"></ul>
+    </div>
+    <script>
+        let produtos = JSON.parse(localStorage.getItem('carrinhoProdutos')) || [];
+
+        function contarProdutos(arr) {
+            const contagem = {};
+            arr.forEach(produto => {
+                contagem[produto] = (contagem[produto] || 0) + 1;
+            });
+            return contagem;
+        }
+
+        function atualizarLista() {
+            const lista = document.getElementById('lista-carrinho');
+            lista.innerHTML = '';
+            const contagem = contarProdutos(produtos);
+            const nomes = Object.keys(contagem);
+            if (nomes.length === 0) {
+                lista.innerHTML = '<li>Nenhum produto adicionado.</li>';
+                return;
+            }
+            nomes.forEach(produto => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${produto}</span>
+                    <span class="quantidade">x${contagem[produto]}</span>
+                    <button class="remover-btn" data-produto="${produto}">Remover</button>
+                `;
+                lista.appendChild(li);
+            });
+
+            // Evento de remover com animação
+            document.querySelectorAll('.remover-btn').forEach(btn => {
+                btn.onclick = function () {
+                    const nome = this.getAttribute('data-produto');
+                    // Remove UM do produto do array
+                    const idx = produtos.indexOf(nome);
+                    if (idx > -1) produtos.splice(idx, 1);
+
+                    // Animação fade-out
+                    const li = this.closest('li');
+                    li.classList.add('fade-out');
+                    setTimeout(() => {
+                        // Atualiza localStorage e lista após animação
+                        localStorage.setItem('carrinhoProdutos', JSON.stringify(produtos));
+                        atualizarLista();
+                    }, 400);
+                };
+            });
+        }
+
+
+        atualizarLista();
+        document.getElementById('carrinho-indicador').addEventListener('click', function () {
+            window.open('carrinho.html', '_blank');
+        });
+    </script>
+
+    <button id="finalizar-pedido" style="
+    display:block;
+    margin: 32px auto 0 auto;
+    background: #8bae6e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 36px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+">Finalizar Pedido</button>
+
+</div>
+
+
+<div id="notificacao" style="
+    display:none; 
+    position:fixed; 
+    top:30px; 
+    left:50%; 
+    transform:translateX(-50%);
+    background:#8bae6e; 
+    color:#fff; 
+    padding:18px 32px; 
+    border-radius:8px; 
+    font-size:1.2rem; 
+    z-index:9999; 
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+"></div>
+
+<script>
+function mostrarNotificacao(mensagem) {
+    const notif = document.getElementById('notificacao');
+    notif.textContent = mensagem;
+    notif.style.display = 'block';
+    notif.style.opacity = '0';
+    notif.style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+        notif.style.opacity = '1';
+    }, 10);
+
+    clearTimeout(notif._timeout);
+    notif._timeout = setTimeout(() => {
+        notif.style.opacity = '0';
+        setTimeout(() => notif.style.display = 'none', 400);
+    }, 2000);
+}
+
+document.getElementById('finalizar-pedido').addEventListener('click', function() {
+    mostrarNotificacao('Pedido finalizado! Em breve entraremos em contato para confirmação.');
+    localStorage.removeItem('carrinhoProdutos');
+    setTimeout(() => {
+        window.location.href = 'desafit.html';
+    }, 2000);
+});
+
+</script>
+    <script>
+        // Exibir notificação de carrinho vazio
+        if (produtos.length === 0) {
+            mostrarNotificacao('Seu carrinho está vazio.');
+        }
+    </script>
+
+    <script>
+function mostrarNotificacao(mensagem, tempo = 4000) { // tempo padrão: 4 segundos
+    const notif = document.getElementById('notificacao');
+    notif.textContent = mensagem;
+    notif.style.display = 'block';
+    notif.style.opacity = '0';
+    notif.style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+        notif.style.opacity = '1';
+    }, 10);
+
+    clearTimeout(notif._timeout);
+    notif._timeout = setTimeout(() => {
+        notif.style.opacity = '0';
+        setTimeout(() => notif.style.display = 'none', 400);
+    }, tempo);
+}
+
+document.getElementById('finalizar-pedido').addEventListener('click', function() {
+    mostrarNotificacao('Pedido finalizado! Em breve entraremos em contato para confirmação.', 5000); // 5 segundos
+    localStorage.removeItem('carrinhoProdutos');
+    // Mantém a visualização da página, não redireciona!
+});
+</script>
+</body>
+
+</html>

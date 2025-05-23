@@ -1,0 +1,373 @@
+.título-principal{
+  font-family: "Arizonia", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 70px;
+  margin: 1 0 1em;
+  clear: left;
+  padding: 0.2px;
+}
+
+header {
+    background-color: #a8ce89;
+}
+
+.caixa {
+
+    width: 940px;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+
+.imagem {
+    width: 260px;
+    text-align: center;
+}
+
+
+nav {
+    position: absolute;
+    top: 126px;
+    right: 0;
+}
+
+
+nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+
+
+nav a {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+
+nav a:hover {
+    color: #8bae6e;
+    text-decoration: underline;
+}
+
+main {
+    width: 940px;
+    margin: 0 auto;
+
+}
+
+
+.enviar {
+    width: 40%;
+    padding: 15px 0;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.enviar:hover {
+    background-color: #8bae6e;
+}
+
+
+footer {
+    text-align: center;
+    background: url(./img/logo.jpg);
+    padding: 40px 0;
+}
+
+
+.copy {
+    color: #ffffff;
+
+}
+
+.produto-imagem {
+    margin: 15px;
+}
+
+.produto-imagem {
+    width: 400px;
+    /* Define a largura da imagem */
+    height: auto;
+    /* Mantém a proporção da altura automaticamente */
+    border: 2px solid #8bae6e;
+    /* Define uma borda verde de 2px */
+    border-radius: 5px;
+    /* Adiciona cantos arredondados */
+    padding: 5px;
+    /* Espaçamento interno entre a borda e a imagem */
+    box-sizing: border-box;
+
+}
+
+.produto-imagem:active {
+    border-color: #e79aa0;
+    /* Altera a cor da rosa para vermelho ao clicar */
+}
+
+.btn-comprar {
+    cursor: pointer;
+    background-color: #8bae6e;
+    /* Cor de fundo do botão */
+    color: #fff;
+    /* Cor da letra (branco) */
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.título-principal {
+    text-align: center;
+    color: #8bae6e;
+    font-weight: bold;
+    text-decoration: underline;
+    
+}
+
+.btn-comprar:hover {
+    background-color: #6e9e4a;
+    color: #fff;
+    transform: scale(1.05);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.produto-item {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.produto-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px) scale(1.02);
+}
+
+.produto-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.título-sanduíche {
+    text-align: center;
+    color: #e79aa0;
+    font-weight: bold;
+}
+
+.título-lanche{
+    text-align: center;
+    color: #e79aa0;
+    font-weight: bold;
+}
+
+.título-sucos{
+    text-align: center;
+    color: #e79aa0;
+    font-weight: bold;
+}
+
+
+.título-principal,
+.título-sanduíche,
+.título-lanche,
+.título-sucos {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    /* Remove fundo branco, mantém destaque com sombra */
+    text-shadow: 2px 2px 8px #fff, 0 0 4px #e79aa0;
+    padding: 6px 0;
+    border-radius: 8px;
+    margin: 12px auto;
+}
+
+
+
+.produto-lista .btn-comprar:last-of-type {
+    margin-bottom: 48px; /* ajuste o valor conforme necessário */
+}
+
+.produto-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin-bottom: 40px; /* Espaço só na parte inferior entre os cards */
+}
+
+.título-principal {
+    font-size: 2.5rem; /* Tamanho maior para o título principal */
+}
+
+/* Aumenta o tamanho do título dos cards */
+.título-sucos,
+.título-lanche,
+.título-sanduíche {
+    font-size: 2rem;
+}
+
+/* Aumenta o tamanho da descrição dos cards */
+.produto-item p,
+.produto-item h3 {
+    font-size: 1.2rem;
+}
+
+/* Aumenta o tamanho da lista de ingredientes */
+.produto-item ul,
+.produto-item li {
+    font-size: 1.15rem;
+}
+
+/* Deixa a cor de fundo dos cards mais clara e suave */
+.produto-item {
+    background: linear-gradient(120deg, #f6fff6 60%, #ffe6f0 100%);
+    box-shadow: 0 4px 16px rgba(140, 174, 110, 0.10);
+    border-radius: 18px;
+    padding: 28px 18px;
+}
+
+.produto-item h3 {
+    margin-bottom: 4px; /* Diminui o espaço abaixo do "Ingredientes" */
+}
+
+.produto-item ul {
+    margin-top: 4px; /* Diminui o espaço acima da lista */
+}
+
+.btn-comprar {
+    cursor: pointer;
+    background-color: #8bae6e;
+    color: #fff;
+    border: none;
+    padding: 15px 15px; /* Aumenta o tamanho do botão */
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.25rem; /* Aumenta o tamanho da fonte */
+    transition: background 0.3s;
+}
+
+body {
+    background: linear-gradient(120deg, #e0ffe0 0%, #e79aa0 100%);
+}
+
+#notificacao {
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+#notificacao.mostrar {
+    display: block !important;
+    opacity: 1;
+}
+
+#carrinho-indicador.animar {
+    transform: scale(1.18) rotate(-10deg);
+    box-shadow: 0 6px 24px rgba(140, 174, 110, 0.18);
+}
+
+.produto-item ul {
+    text-align: justify;         /* Justifica o texto dos itens */
+    padding-left: 1.2em;         /* Mantém o recuo padrão da lista */
+    list-style-position: outside;/* Mantém o marcador à esquerda */
+    margin: 0;
+}
+
+.produto-item li {
+    text-align: justify;         /* Justifica o texto dentro do item */
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .carrinho-container {
+        max-width: 98vw;
+        padding: 10px;
+        margin: 10px auto;
+    }
+    .produto-imagem {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 300px;
+    }
+    button, .remover-btn {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+    ul, li {
+        font-size: 1rem;
+    }
+}
+
+/* Adiciona espaçamento acima dos botões de compra */
+.btn-comprar {
+    margin-top: 18px; /* ajuste o valor como preferir */
+}
+
+.produto-item h3 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    /* Se quiser ainda menor, use 2px */
+}
+footer {
+    background-color: #8bae6e;
+    color: #fff;
+    padding: 40px 0 20px 0;
+    font-size: 1.1em;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-contato {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer-icone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-icone:hover {
+    color: #444;
+}
+
+.footer-copy {
+    margin-top: 10px;
+    font-size: 1em;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+

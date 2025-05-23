@@ -1,0 +1,69 @@
+body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #e0ffe0 0%, #e79aa0 100%);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .carrinho-container {
+            background: #fff;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 32px;
+            box-shadow: 0 4px 16px rgba(140, 174, 110, 0.10);
+        }
+
+        h1 {
+            color: #8bae6e;
+            text-align: center;
+        }
+
+        ul {
+            font-size: 1.2rem;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            background: #f6fff6;
+            margin-bottom: 12px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 1;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .quantidade {
+            background: #e79aa0;
+            color: #fff;
+            border-radius: 12px;
+            padding: 4px 12px;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .remover-btn {
+            background: #e79aa0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 10px;
+            transition: background 0.2s;
+        }
+
+        .remover-btn:hover {
+            background: #c95b7b;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+            transform: translateX(40px) scale(0.95);
+        }
